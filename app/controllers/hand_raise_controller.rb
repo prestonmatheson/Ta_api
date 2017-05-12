@@ -9,10 +9,6 @@ class HandRaiseController < ApplicationController
 	
   private
     def verify_authenticity_token key
-      if key == AUTH_KEY
-        return true
-      else
-        return false
-      end
+      key == AUTH_KEY ? true : false
     end
 end
