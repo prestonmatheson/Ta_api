@@ -1,0 +1,2 @@
+class HandRaise < ApplicationRecord
+end
