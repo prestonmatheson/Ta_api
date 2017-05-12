@@ -1,12 +1,12 @@
 class Ta_Api
 	validates_presence_of :id, :question, :email, :name, :slack_username
 
-  def ta_patch(issue_id, resolution)
+  def self.ta_patch(issue_id, resolution)
     response = HTTParty.patch("https://devcamp.com/hand_raises/#{issue_id}/?hand_raise[#{resolution}]")
     puts response.body
   end
 
-  def ta_post(text)
+  def self.ta_post(text)
     parsed_json = JSON.parse(text)
     HandRaise.create(hand_raise_id: parsed_json['hand_raise_id'],
                      question: parsed_json['question'], 
