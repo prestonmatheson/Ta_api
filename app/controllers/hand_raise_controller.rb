@@ -1,19 +1,11 @@
 class HandRaiseController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:create, :update]
 	def create
-    puts params
-    # if text != nil
-    #   Ta_Api.ta_post(text) 
-    # else
-    #   raise "waffles. Show Us What You GOTTTTTT"
-    # end
+        Ta_Api.ta_post(params) 
 	end
 
 	def update
+        @raised_hand = HandRaise.find(params[:id]) unless HandRaise == nil
+        Ta_Api.ta_patch(params[:id], params[:resolution])
 	end
-	
-  private
-    # def verify_authenticity_token key
-    #   key == AUTH_KEY ? true : false
-    # end
 end
